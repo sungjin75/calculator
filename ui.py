@@ -1,6 +1,7 @@
-# ch 5.2.1 ui.py
-from PyQt5.QtWidgets import (QApplication, QWidget, QPushButton, QVBoxLayout, QMessageBox, QPlainTextEdit, QHBoxLayout)
+# ch 6.2.1 ui.py
+from PyQt5.QtWidgets import (QApplication, QWidget, QPushButton, QVBoxLayout, QMessageBox, QPlainTextEdit, QHBoxLayout, QLineEdit, QComboBox) # QLineEdit, QComboBox 추가
 from PyQt5.QtGui import QIcon
+from PyQt5 import QtCore # 모듈 추가
 
 class View(QWidget):
     
@@ -12,6 +13,20 @@ class View(QWidget):
         self.te1 = QPlainTextEdit()
         self.te1.setReadOnly(True)
         
+        self.le1 = QLineEdit('0', self) # 라인 에디트1 추가
+        self.le1.setAlignment(QtCore.Qt.AlignRight) # 라인 에디트1 문자열 배치 설정
+
+        self.le2 = QLineEdit('0', self) # 라인 에디트2 추가
+        self.le2.setAlignment(QtCore.Qt.AlignRight) # 라인 에디트2 문자열 배치 설정
+
+        self.cb = QComboBox(self) # 콤보 박스 추가
+        self.cb.addItems(['+', '-', '*', '/']) # 콤보 박스 항목 추가(연산자로 사용)
+
+        hbox_formular = QHBoxLayout() # 새로 정의한 위젯을 QHBoxLayout에 배치
+        hbox_formular.addWidget(self.le1)
+        hbox_formular.addWidget(self.cb)
+        hbox_formular.addWidget(self.le2)
+
         self.btn1 = QPushButton('Message', self)
         self.btn2 = QPushButton('Clear', self)
         
@@ -22,6 +37,7 @@ class View(QWidget):
         
         vbox = QVBoxLayout()
         vbox.addWidget(self.te1)
+        vbox.addLayout(hbox_formular) # hbox_formular 배치
         vbox.addLayout(hbox)
         vbox.addStretch(1)
         
