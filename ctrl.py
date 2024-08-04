@@ -1,4 +1,4 @@
-# ch 7.5.1 ctrl.py
+# ch 7.5.2 ctrl.py
 class Control:
     
     def __init__(self, view):
@@ -39,8 +39,12 @@ class Control:
 
         return a/b
 
-    def pow(self, a, b): # 제곱 함수 수정
-        if (a == 0):
+    def pow(self, a, b): # 예외 처리를 사용하도록 수정
+        try:
+            if (a == 0):
+                raise Exception("Base Error")
+
+        except Exception as e:
             return 0
-        else:
-            return pow(a, b)
+
+        return pow(a, b)
