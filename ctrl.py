@@ -29,11 +29,15 @@ class Control:
     def mul(self, a, b):
             return a*b
 
-    def div(self, a, b): # div 함수 수정
-        if (b == 0):
-            return 0
-        else:
-            return a/b
+    def div(self, a, b): # 예외 처리를 사용하도록 수정
+        try:
+            if (b == 0):
+                raise Exception("Divisior Error")
+
+        except Exception as e:
+            return e
+
+        return a/b
 
     def pow(self, a, b): # 제곱 연산 함수 추가
             return pow(a, b)
