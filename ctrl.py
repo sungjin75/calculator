@@ -1,4 +1,4 @@
-# ch 7.5.2 ctrl.py
+# ch 7.6.2 ctrl.py
 class Control:
     
     def __init__(self, view):
@@ -21,6 +21,8 @@ class Control:
                 return f'{num1} / {num2} = {self.div(num1, num2)}'
             elif operator == '^':
                 return f'{num1} ^ {num2} = {self.pow(num1, num2)}'
+            elif operator == '%':
+                return f'{num1} % {num2} = {self.mod(num1, num2)}'
             else:
                 return "Calculation Error"
         except:
