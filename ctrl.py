@@ -1,4 +1,4 @@
-# ch 7.1.3 ctrl.py
+# ch 7.5.2 ctrl.py
 class Control:
     
     def __init__(self, view):
@@ -29,8 +29,22 @@ class Control:
     def mul(self, a, b):
             return a*b
 
-    def div(self, a, b):
-            return a/b
+    def div(self, a, b): # 예외 처리를 사용하도록 수정
+        try:
+            if (b == 0):
+                raise Exception("Divisior Error")
 
-    def pow(self, a, b): # 제곱 연산 함수 추가
-            return pow(a, b)
+        except Exception as e:
+            return e
+
+        return a/b
+
+    def pow(self, a, b): # 예외 처리를 사용하도록 수정
+        try:
+            if (a == 0):
+                raise Exception("Base Error")
+
+        except Exception as e:
+            return 0
+
+        return pow(a, b)
