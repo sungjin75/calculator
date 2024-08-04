@@ -1,4 +1,4 @@
-# ch 7.6.1 ui.py
+# ch 7.7.2 ui.py
 from PyQt5.QtWidgets import (QApplication, QWidget, QPushButton, QVBoxLayout, QMessageBox, QPlainTextEdit, QHBoxLayout, QLineEdit, QComboBox) # QLineEdit, QComboBox 추가
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtCore # 모듈 추가
@@ -22,7 +22,8 @@ class View(QWidget):
         self.le2.setAlignment(QtCore.Qt.AlignRight) # 라인 에디트2 문자열 배치 설정
 
         self.cb = QComboBox(self) # 콤보 박스 추가
-        self.cb.addItems(['+', '-', '*', '/', '^', '%']) # % 연산자 추가
+        # self.cb.addItems(['+', '-', '*', '/', '^', '%'])
+        self.cb.addItems(['+', '-', '*', '/',]) # ^와 % 연산자 제거
 
         hbox_formular = QHBoxLayout() # 새로 정의한 위젯을 QHBoxLayout에 배치
         hbox_formular.addWidget(self.le1)

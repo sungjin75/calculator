@@ -1,16 +1,16 @@
-# ch 7.6.2 ctrl.py
+# ch 7.7.2 ctrl.py
 class Control:
     
     def __init__(self, view):
         self.view = view
         self.connectSignals()
 
-    def calculate(self):
-        try: # 숫자가 아닌 값이 입력되었을 때도 프록그램이 동작하도록 예외 처리 구문 추가
+    def calculate(self): # ^, % 연산 기능 제거
+        try:
             num1 = float(self.view.le1.text())
             num2 = float(self.view.le2.text())
             operator = self.view.cb.currentText()
-
+            
             if operator == '+':
                 return f'{num1} + {num2} = {self.sum(num1, num2)}'
             elif operator == '-':
@@ -19,10 +19,6 @@ class Control:
                 return f'{num1} * {num2} = {self.mul(num1, num2)}'
             elif operator == '/':
                 return f'{num1} / {num2} = {self.div(num1, num2)}'
-            elif operator == '^':
-                return f'{num1} ^ {num2} = {self.pow(num1, num2)}'
-            elif operator == '%':
-                return f'{num1} % {num2} = {self.mod(num1, num2)}'
             else:
                 return "Calculation Error"
         except:
@@ -51,23 +47,3 @@ class Control:
             return e
 
         return a/b
-
-    def pow(self, a, b): # 예외 처리를 사용하도록 수정
-        try:
-            if (a == 0):
-                raise Exception("Base Error")
-
-        except Exception as e:
-            return 0
-
-        return pow(a, b)
-    
-    def mod(self, a, b): # 나눗셈 연산의 나머지를 리턴하는 함수 추가
-        try:
-            if (b==0):
-                raise Exception("Divisor Error")
-        
-        except Exception as e:
-            return e
-        
-        return a%b
