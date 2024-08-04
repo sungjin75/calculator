@@ -10,7 +10,7 @@ class Control:
             num1 = float(self.view.le1.text())
             num2 = float(self.view.le2.text())
             operator = self.view.cb.currentText()
-            print(operator)
+
             if operator == '+':
                 return f'{num1} + {num2} = {self.sum(num1, num2)}'
             elif operator == '-':
@@ -61,3 +61,13 @@ class Control:
             return 0
 
         return pow(a, b)
+    
+    def mod(self, a, b): # 나눗셈 연산의 나머지를 리턴하는 함수 추가
+        try:
+            if (b==0):
+                raise Exception("Divisor Error")
+        
+        except Exception as e:
+            return e
+        
+        return a%b
